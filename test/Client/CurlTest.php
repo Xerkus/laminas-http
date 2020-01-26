@@ -47,7 +47,7 @@ class CurlTest extends CommonHttpTests
         ],
     ];
 
-    protected function setUp()
+    protected function setUp(): void
     {
         if (! extension_loaded('curl')) {
             $this->markTestSkipped('cURL is not installed, marking all Http Client Curl Adapter tests skipped.');
@@ -357,7 +357,7 @@ class CurlTest extends CommonHttpTests
         $adapter->setOptions(['timeout' => 2, 'maxredirects' => 1]);
         $adapter->connect('getlaminas.org');
 
-        $this->assertInternalType('resource', $adapter->getHandle());
+        $this->assertIsResource($adapter->getHandle());
     }
 
     /**

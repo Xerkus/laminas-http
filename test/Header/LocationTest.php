@@ -52,6 +52,7 @@ class LocationTest extends TestCase
      */
     public function testLocationCanSetDifferentSchemeUris($uri, $expectedClass)
     {
+        $this->markTestIncomplete('Depends on removed deprecated assertions');
         $locationHeader = new Location();
         $locationHeader->setUri($uri);
         $this->assertAttributeInstanceOf($expectedClass, 'uri', $locationHeader);
@@ -67,6 +68,7 @@ class LocationTest extends TestCase
      */
     public function testLocationCanSetDifferentSchemeUriObjects($uri, $expectedClass)
     {
+        $this->markTestIncomplete('Depends on removed deprecated assertions');
         $uri = UriFactory::factory($uri);
         $locationHeader = new Location();
         $locationHeader->setUri($uri);

@@ -30,6 +30,7 @@ class GenericHeaderTest extends TestCase
             );
             $this->fail('Allowed char rejected: ' . ord($name)); // For easy debug
         }
+        $this->addToAssertionCount(1);
     }
 
     /**

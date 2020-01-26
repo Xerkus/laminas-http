@@ -74,7 +74,7 @@ abstract class CommonHttpTests extends TestCase
     /**
      * Set up the test case
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $baseUri = getenv('TESTS_LAMINAS_HTTP_CLIENT_BASEURI');
 
@@ -106,7 +106,7 @@ abstract class CommonHttpTests extends TestCase
     /**
      * Clean up the test environment
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->client = null;
         $this->_adapter = null;
@@ -527,7 +527,7 @@ abstract class CommonHttpTests extends TestCase
 
         // Check that we have received and persisted expected cookies
         $cookies = $this->client->getCookies();
-        $this->assertInternalType('array', $cookies, 'Client is not sending cookies on redirect');
+        $this->assertIsArray($cookies, 'Client is not sending cookies on redirect');
         $this->assertArrayHasKey('laminastestSessionCookie', $cookies, 'Client is not sending cookies on redirect');
         $this->assertArrayHasKey('laminastestLongLivedCookie', $cookies, 'Client is not sending cookies on redirect');
         $this->assertEquals('positive', $cookies['laminastestSessionCookie']->getValue());
@@ -950,7 +950,7 @@ abstract class CommonHttpTests extends TestCase
         $response = $this->client->send();
 
         $this->assertInstanceOf(Stream::class, $response, 'Request did not return stream response!');
-        $this->assertInternalType('resource', $response->getStream(), 'Request does not contain stream!');
+        $this->assertIsResource($response->getStream(), 'Request does not contain stream!');
 
         $streamName = $response->getStreamName();
 
@@ -977,7 +977,7 @@ abstract class CommonHttpTests extends TestCase
         $response = $this->client->send();
 
         $this->assertInstanceOf(Stream::class, $response, 'Request did not return stream response!');
-        $this->assertInternalType('resource', $response->getStream(), 'Request does not contain stream!');
+        $this->assertIsResource($response->getStream(), 'Request does not contain stream!');
 
         $body = $response->getBody();
 
@@ -998,7 +998,7 @@ abstract class CommonHttpTests extends TestCase
         $response = $this->client->send();
 
         $this->assertInstanceOf(Stream::class, $response, 'Request did not return stream response!');
-        $this->assertInternalType('resource', $response->getStream(), 'Request does not contain stream!');
+        $this->assertIsResource($response->getStream(), 'Request does not contain stream!');
 
         $this->assertEquals($outfile, $response->getStreamName());
 

@@ -33,7 +33,7 @@ class TestAdapterTest extends TestCase
     /**
      * Set up the test adapter before running the test
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->adapter = new Test();
     }
@@ -41,7 +41,7 @@ class TestAdapterTest extends TestCase
     /**
      * Tear down the test adapter after running the test
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         $this->adapter = null;
     }
@@ -60,16 +60,19 @@ class TestAdapterTest extends TestCase
     public function testSetConfigReturnsQuietly()
     {
         $this->adapter->setOptions(['foo' => 'bar']);
+        $this->addToAssertionCount(1);
     }
 
     public function testConnectReturnsQuietly()
     {
         $this->adapter->connect('http://foo');
+        $this->addToAssertionCount(1);
     }
 
     public function testCloseReturnsQuietly()
     {
         $this->adapter->close();
+        $this->addToAssertionCount(1);
     }
 
     public function testFailRequestOnDemand()
@@ -83,6 +86,7 @@ class TestAdapterTest extends TestCase
         } catch (RuntimeException $e) {
             // Connect again to see that the next request does not fail
             $this->adapter->connect('http://foo');
+            $this->addToAssertionCount(1);
         }
     }
 

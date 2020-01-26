@@ -149,10 +149,12 @@ class AcceptTest extends TestCase
                 if (! $shouldPass) {
                     $this->fail('Exception expected');
                 }
+                $this->addToAssertionCount(1);
             } catch (InvalidArgumentException $e) {
                 if ($shouldPass) {
                     throw $e;
                 }
+                $this->addToAssertionCount(1);
             }
         }
     }
@@ -280,7 +282,7 @@ class AcceptTest extends TestCase
 
     /**
      * @group 3739
-     * @covers Laminas\Http\Header\AbstractAccept::matchAcceptParams()
+     * @covers \Laminas\Http\Header\AbstractAccept::matchAcceptParams()
      */
     public function testParamRangesWithDecimals()
     {
@@ -290,8 +292,8 @@ class AcceptTest extends TestCase
 
     /**
      * @group 3740
-     * @covers Laminas\Http\Header\AbstractAccept::matchAcceptParams()
-     * @covers Laminas\Http\Header\AbstractAccept::getParametersFromFieldValuePart()
+     * @covers \Laminas\Http\Header\AbstractAccept::matchAcceptParams()
+     * @covers \Laminas\Http\Header\AbstractAccept::getParametersFromFieldValuePart()
      *
      * @dataProvider provideParamRanges
      *
@@ -473,5 +475,6 @@ class AcceptTest extends TestCase
     {
         $accept = new Accept();
         $accept->getFieldValue();
+        $this->addToAssertionCount(1);
     }
 }

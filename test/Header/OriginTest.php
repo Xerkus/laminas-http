@@ -23,7 +23,7 @@ class OriginTest extends TestCase
     {
         $origin = new Origin();
 
-        $this->assertInternalType('string', $origin->getFieldValue());
+        $this->assertIsString($origin->getFieldValue());
     }
 
     public function testOriginFromStringCreatesValidOriginHeader()
